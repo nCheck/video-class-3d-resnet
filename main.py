@@ -10,6 +10,7 @@ from opts import parse_opts
 from model import generate_model
 from mean import get_mean
 from classify import classify_video
+from utils import get_video_length
 
 if __name__=="__main__":
     opt = parse_opts()
@@ -49,6 +50,11 @@ if __name__=="__main__":
     for input_file in input_files:
         video_path = os.path.join(opt.video_root, input_file)
         if os.path.exists(video_path):
+
+            if get_video_length(video_path) > 200:
+                print("LONG VIDEO, skipping------->")
+                continue
+
             print(video_path)
             subprocess.call('mkdir tmp', shell=True)
             subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
