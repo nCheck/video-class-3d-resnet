@@ -51,7 +51,7 @@ if __name__=="__main__":
         video_path = os.path.join(opt.video_root, input_file)
         if os.path.exists(video_path):
 
-            if get_video_length(video_path) > 200:
+            if get_video_length(video_path) > 240:
                 print("LONG VIDEO, skipping------->")
                 continue
 
