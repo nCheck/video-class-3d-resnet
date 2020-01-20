@@ -51,14 +51,19 @@ if __name__=="__main__":
         video_path = os.path.join(opt.video_root, input_file)
         if os.path.exists(video_path):
 
-            if get_video_length(video_path) > 310:
-                print("LONG VIDEO, skipping------->")
-                continue
+            if get_video_length(video_path) > 240:
 
-            print(video_path)
-            subprocess.call('mkdir tmp', shell=True)
-            subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg'.format(video_path),
-                            shell=True)
+                print(video_path)
+                subprocess.call('mkdir tmp', shell=True)
+                subprocess.call('ffmpeg -i {} -ss 00:00:01 -t 00:04:01 tmp/image_%05d.jpg'.format(video_path),
+                                shell=True)
+            
+            else:
+
+                print(video_path)
+                subprocess.call('mkdir tmp', shell=True)
+                subprocess.call('ffmpeg -i {}  tmp/image_%05d.jpg'.format(video_path),
+                                shell=True)
 
             result = classify_video('tmp', input_file, class_names, model, opt)
             outputs.append(result)
