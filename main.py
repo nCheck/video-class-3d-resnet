@@ -54,6 +54,7 @@ if __name__=="__main__":
             if get_video_length(video_path) > 300:
 
                 print("SKIPPING LONG VDO -->>>>>")
+                continue
                 # print(video_path)
                 # subprocess.call('mkdir tmp', shell=True)
                 # subprocess.call('ffmpeg -i {} -ss 00:00:01 -t 00:04:01 tmp/image_%05d.jpg -loglevel quiet -stats'.format(video_path),
