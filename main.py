@@ -57,14 +57,14 @@ if __name__=="__main__":
                 continue
                 # print(video_path)
                 # subprocess.call('mkdir tmp', shell=True)
-                # subprocess.call('ffmpeg -i {} -ss 00:00:01 -t 00:04:01 tmp/image_%05d.jpg -loglevel quiet -stats'.format(video_path),
+                # subprocess.call('ffmpeg -i {} -ss 00:00:01 -t 00:04:01 -vf scale=240:320 -r 30 tmp/image_%05d.jpg -loglevel quiet -stats'.format(video_path),
                 #                 shell=True)
             
             else:
 
                 print(video_path)
                 subprocess.call('mkdir tmp', shell=True)
-                subprocess.call('ffmpeg -i {} tmp/image_%05d.jpg -loglevel quiet -stats'.format(video_path),
+                subprocess.call('ffmpeg -i {} -vf scale=240:320 -r 30 tmp/image_%05d.jpg -loglevel quiet -stats'.format(video_path),
                                 shell=True)
 
             result = classify_video('tmp', input_file, class_names, model, opt)
