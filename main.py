@@ -17,7 +17,7 @@ if __name__=="__main__":
     opt.mean = get_mean()
     opt.arch = '{}-{}'.format(opt.model_name, opt.model_depth)
     opt.sample_size = 125
-    opt.sample_duration = 32
+    opt.sample_duration = 16
     opt.n_classes = 400
 
     model = generate_model(opt)
@@ -51,7 +51,7 @@ if __name__=="__main__":
         video_path = os.path.join(opt.video_root, input_file)
         if os.path.exists(video_path):
 
-            if get_video_length(video_path) > 300:
+            if get_video_length(video_path) > 400:
 
                 print("SKIPPING LONG VDO -->>>>>")
                 continue
